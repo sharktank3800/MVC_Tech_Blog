@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const db = require("../config/connection");
 const dayjs = require("dayjs");
-
+const Comment = require("./Comment");
 
 class Post extends Model { }
 
@@ -29,9 +29,20 @@ Post.init({
     }
   }
 }, {
-  modelName: "user_post",
+  modelName: "post",
   freezeTableName: true,
   sequelize: db
+});
+
+
+Post.hasMany(Comment, {
+  as: "comments",
+  foreignKey: "post_id"
+});
+
+Comment.belongsTo(Post, {
+  as: "post",
+  foreignKey: "post_id"
 });
 
 module.exports = Post;

@@ -1,14 +1,18 @@
 const express = require("express");
-const {comment_routes, post_routes, user_routes, view_routes} = require("./controllers")
+const view_routes = require("./controllers/view_routes")
+const post_routes = require("./controllers/post_routes")
+const user_routes = require("./controllers/user_routes")
+const comment_routes = require("./controllers/comment_routes")
 const {engine} = require("express-handlebars");
 const session = require("express-session");
+const db = require("./config/connection");
 
 const PORT = process.env.PORT || 3001;
 
 // server app
 const app = express();
 
-// used to parse URL encoded data from incoming requests URL endcoded data is sent in the body of HTML forms, 
+// used to parse URL encoded data from incoming requests and URL endcoded data is sent in the body of HTML forms, 
 // we need this since were using handlebars.js
 app.use(express.urlencoded({extended: false}));
 
@@ -35,7 +39,8 @@ app.use("/", [post_routes, view_routes, comment_routes]);
 app.use("/auth", user_routes)
 
 
-
-app.listen(PORT, () => {
-    console.log(`SERVER IS RUNNING ON port: ${PORT}`);
+db.sync({force: false})
+.then(() => {
+    app.listen(PORT, () => 
+    console.log(`SERVER IS RUNNING ON port: ${PORT}`));
 });

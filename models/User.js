@@ -1,6 +1,8 @@
 const { Model, DataTypes } = require("sequelize");
 const db = require("../config/connection");
 const { hash, compare } = require("bcrypt");
+const Post = require("./Post");
+const Comment = require("./Comment");
 
 class User extends Model {}
 
@@ -43,6 +45,26 @@ User.prototype.validatePass = async function(formPassword){
     const isValid = await compare(formPassword, this.password);
     return isValid;
 }
+
+User.hasMany(Post, {
+  as: "posts",
+  foreignKey: "author_id",
+});
+
+Post.belongsTo(User, {
+  as: "author",
+  foreignKey: "author_id",
+});
+
+User.hasMany(Comment, {
+  as: "comments",
+  foreignKey: "user_id",
+});
+
+Comment.belongsTo(User, {
+  as: "user",
+  foreignKey: "user_id",
+});
 
 
 module.exports = User;
