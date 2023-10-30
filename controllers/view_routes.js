@@ -24,10 +24,10 @@ function isAuthenticated(req, res, next) {
 
 // join user data to the request if they are logged in
 async function authenticate(req, res, next) {
-  const user_id = req.session.user_id;
+  const userID = req.session.user_id;
 
-  if (user_id) {
-    const user = await User.findByPk(req.session.user_id, {
+  if (userID) {
+    const user = await User.findByPk(userID, {
       attributes: ['id', 'email']
     });
 

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
-const { User, Comment } = require("../models");
+const User = require("../models/User");
+const Comment = require("../models/Comment")
 
 // block a route if a user is not logged in
 function isAuthenticated(req, res, next) {
@@ -36,3 +37,6 @@ router.post("/comment", isAuthenticated, authenticate, async (req, res, next) =>
         res.redirect("/comment");
     }
 });
+
+// export the router
+module.exports = router;
