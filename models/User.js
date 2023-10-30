@@ -30,6 +30,6 @@ User.init({
     sequelize: db
 })
 
-User.hasMany(Post, {as: "posts", foreignKey: "author_id"});
+
 
 module.exports = User;
