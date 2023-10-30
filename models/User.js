@@ -1,19 +1,18 @@
 const {Model, DataTypes} = require("sequelize");
 const db = require("../config/connection")
-const Post = require("./Post");
-const Comment = require("./Comment");
+const {hash, compare} = require("bcrypt");
 
 
 class User extends Model{ }
 
 
 User.init({
-    email:{
+    username:{
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
-        validate: {
-            isEmail: true
+        unique: {
+            args: true,
+            msg: "Username is already in use."
         }
     },
 
@@ -21,7 +20,10 @@ User.init({
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            min: 6
+            len: {
+                args: 6,
+                msg: "Password must be at least 6 Characters long."
+            }
         }
     }
 }, {
