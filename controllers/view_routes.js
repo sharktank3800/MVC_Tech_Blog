@@ -55,8 +55,8 @@ router.get('/', authenticate, async (req, res) => {
 
 
 // route to render the register page
-router.get('/register', isLoggedIn, authenticate, (req, res) => {
-  res.render('register_form', {
+router.get("/register", isLoggedIn, authenticate, (req, res) => {
+  res.render("register_form", {
     errors: req.session.errors,
     user: req.user
   });
@@ -65,9 +65,9 @@ router.get('/register', isLoggedIn, authenticate, (req, res) => {
 });
 
 // route to render the login page
-router.get('/login', isLoggedIn, authenticate, (req, res) => {
+router.get("/login", isLoggedIn, authenticate, (req, res) => {
 
-  res.render('login', {
+  res.render("login", {
     errors: req.session.errors,
     user: req.user
   });

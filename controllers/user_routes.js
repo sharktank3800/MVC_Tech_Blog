@@ -8,7 +8,7 @@ const User = require('../models/User.js');
 // Post request route that retrieves the form data(email, password) and creates a new user in the database, using our User model
 // The route will respond with a data object with a property of message that says "User added successfully!"
 
-router.post('/register', async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
     const user = await User.create(req.body);
 
@@ -19,13 +19,13 @@ router.post('/register', async (req, res) => {
   } catch (error) {
     // Set our session errors array to an array of just Sequelize error message strings
     req.session.errors = error.errors.map(errObj => errObj.message);
-    res.redirect('/register');
+    res.redirect("/register_form");
   }
 });
 
 
 
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   const user = await User.findOne({
     where: {
       email: req.body.username
