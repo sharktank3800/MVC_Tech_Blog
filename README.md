@@ -16,7 +16,7 @@ Tech Blog is a web application for sharing and reading tech-related articles and
 
 ## Features
 
-- User authentication: Users can create accounts and log in.
+- User authentication: Users can create accounts and log in
 - Post creation: Authenticated users can create, edit, and delete their blog posts.
 - User profiles: Users have profiles displaying their posts and information.
 
