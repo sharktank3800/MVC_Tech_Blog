@@ -1,26 +1,26 @@
 <a href="/">
-  <h2>Tech Blog</h2>
+  <h2 >Tech Blog</h2>
 </a>
 
-<form action="/post" method="post">
+<form action="/post" method="post" >
   <h4>Create new post</h4>
 
   {{#each errors}}
-    <p>{{this}}</p>
+    <p class="error-message">{{this}}</p>
   {{/each}}
 
   <div>
-    <input type="text" name="title" id="" required>
-    <label for="username">Title</label>
+    <input type="text" name="title" id="title" required />
+    <label for="title">Title</label>
+  </div>
+
+  <div >
+    <input type="text" name="content" required />
+    <label for="content" >Content</label>
   </div>
 
   <div>
-    <input type="text" name="content" required>
-    <label for="password">Content</label>
+    <button type="submit" >Create</button>
   </div>
-
-  <div>
-    <button type="submit">Create</button>
-  </div>
-
+  
 </form>

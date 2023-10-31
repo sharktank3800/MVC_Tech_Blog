@@ -1,12 +1,15 @@
 <a href="/">
-  <h2>Tech Blog</h2>
+  <div>
+    <h2 class="logo">Tech Blog</h2>
+  </div>
 </a>
 
-{{#each posts}}
-
-  <h4>{{title}}</h4>
-  <p>POSTED BY {{author.username}} on {{date}}</p>
-
-  <h5>{{content}}</h5>
-
-{{/each}}
+{{#if user}}
+  {{#each posts}}
+    <h4>{{title}}</h4>
+    <p>POSTED BY {{author.username}} on {{date}}</p>
+    <p>{{content}}</p>
+  {{/each}}
+{{else}}
+  <p>You are not logged in. Please log in to see posts.</p>
+{{/if}}

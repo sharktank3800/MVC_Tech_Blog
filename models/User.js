@@ -47,7 +47,7 @@ User.prototype.validatePass = async function(formPassword){
 }
 
 User.hasMany(Post, {
-  as: "posts",
+  as: "post",
   foreignKey: "author_id",
 });
 

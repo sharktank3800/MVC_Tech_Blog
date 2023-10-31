@@ -28,7 +28,7 @@ async function authenticate(req, res, next) {
 
   if (userID) {
     const user = await User.findByPk(userID, {
-      attributes: ['id', 'email']
+      attributes: ['id', 'username']
     });
 
     req.user = user.get({ plain: true });

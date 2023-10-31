@@ -26,15 +26,32 @@ async function authenticate(req, res, next) {
 }
 
 // TO post
+// router.post('/post', isAuthenticated, authenticate, async (req, res) => {
+//   try {
+//     const post = await Post.create(req.body);
+
+//     await req.user.addpost(post);
+
+//     res.redirect('/');
+//   } catch (err) {
+//     console.error(err)
+//     req.session.errors = err.errors.map(errObj => errObj.message);
+//     res.redirect('/blogPost');
+//   }
+// });
+
 router.post('/post', isAuthenticated, authenticate, async (req, res) => {
   try {
     const post = await Post.create(req.body);
-
-    await req.user.addpost(post);
-
+    await req.user.addPost(post);
     res.redirect('/');
-  } catch (error) {
-    req.session.errors = error.errors.map(errObj => errObj.message);
+  } catch (err) {
+    if (err && err.errors) {
+      req.session.errors = err.errors.map(errObj => errObj.message);
+    } else {
+      console.error(err); // Log the error for debugging
+      req.session.errors = ['An error occurred. Please try again.'];
+    }
     res.redirect('/blogPost');
   }
 });
