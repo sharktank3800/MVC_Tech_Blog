@@ -1,0 +1,27 @@
+<a href="/">
+  <h2 class="darkText">Tech Blog</h2>
+</a>
+
+<form action="/auth/register" method="post">
+  <h4>Register</h4>
+
+  {{#each errors}}
+    <p>{{this}}</p>
+  {{/each}}
+
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" required />
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" required />
+  </div>
+
+  <div>
+    <button type="submit">Register</button>
+    <a href="/login">Login Instead!</a>
+  </div>
+
+</form>

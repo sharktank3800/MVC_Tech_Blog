@@ -1,0 +1,26 @@
+<a href="/">
+  <h2>Tech Blog</h2>
+</a>
+
+<form action="/comment" method="post">
+  <div>
+
+  </div>
+
+  <div>
+    {{#each errors}}
+      <p>{{this}}</p>
+    {{/each}}
+
+    <div>
+      <input type="text" name="comment" required />
+      <label for="username">Comment</label>
+    </div>
+
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+
+  </div>
+
+</form>

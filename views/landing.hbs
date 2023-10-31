@@ -1,0 +1,12 @@
+<a href="/">
+  <h2>Tech Blog</h2>
+</a>
+
+{{#each posts}}
+
+  <h4>{{title}}</h4>
+  <p>POSTED BY {{author.username}} on {{date}}</p>
+
+  <h5>{{content}}</h5>
+
+{{/each}}

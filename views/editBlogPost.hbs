@@ -1,0 +1,27 @@
+<a href="/">
+  <h2>Tech blog</h2>
+</a>
+
+<form action="/updatePost/{{post.id}}?_method=put" method="post">
+  <h3>EDIT post</h3>
+
+
+  {{#Each errors}}
+  <p>{{this}}</p>
+  {{/each}}
+
+  <div>
+    <input type="text" name="title" required value="{{post.title}}">
+    <label for="title">Title</label>
+  </div>
+
+  <div>
+    <input type="text" name="content" required value="{{post.content}}">
+    <label for="content" >Content</label>
+  </div>
+
+  <div>
+    <button type="submit" formaction="/deletePost/{{post.id}}?_method=DELETE">Delete Post</button>
+  </div>
+
+</form>
