@@ -12,7 +12,7 @@ const port = process.env.PORT || 3306;
 // server app
 const app = express();
 
-// used to parse URL encoded data from incoming requests and URL endcoded data is sent in the body of HTML forms,
+// used to parse URL encoded data from incoming requests and URL endcoded data is sent in the body of HTML forms
 // we need this since were using handlebars.js
 app.use(express.urlencoded({ extended: false }));
 
