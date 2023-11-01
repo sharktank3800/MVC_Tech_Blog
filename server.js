@@ -7,7 +7,7 @@ const { engine } = require("express-handlebars");
 const session = require("express-session");
 const db = require("./config/connection");
 
-const PORT = process.env.PORT || 3001;
+const port = process.env.PORT || 3306;
 
 // server app
 const app = express();
@@ -39,8 +39,8 @@ app.use("/", [post_routes, view_routes, comment_routes]);
 app.use("/auth", user_routes);
 
 db.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
-    console.log(`SERVER IS RUNNING ON port: ${PORT}`);
+  app.listen(port, () => {
+    console.log(`SERVER IS RUNNING ON port: ${port}`);
   });
 }).catch((err) => {
     console.error("Database sync error:", err);
