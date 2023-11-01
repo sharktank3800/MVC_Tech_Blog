@@ -6,8 +6,9 @@ const comment_routes = require("./controllers/comment_routes");
 const { engine } = require("express-handlebars");
 const session = require("express-session");
 const db = require("./config/connection");
+require("dotenv");
 
-const port = process.env.PORT || 3306;
+const port = process.env.PORT || 3001;
 
 // server app
 const app = express();
